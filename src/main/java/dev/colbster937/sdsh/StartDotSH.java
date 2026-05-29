@@ -12,7 +12,7 @@ public final class StartDotSH {
     "start." + (
       !System.getProperty("os.name").toLowerCase().contains("win")
         ? "sh"
-        : "exe"
+        : "bat"
     )
   ).toAbsolutePath().normalize();
 
