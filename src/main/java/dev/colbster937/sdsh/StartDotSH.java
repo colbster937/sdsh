@@ -1,7 +1,6 @@
 package dev.colbster937.sdsh;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.lang.management.ManagementFactory;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -16,7 +15,7 @@ public final class StartDotSH {
     )
   ).toAbsolutePath().normalize();
 
-  public static final void main(final String[] args) throws IOException, InterruptedException {
+  public static void main(String[] args) throws Exception {
     if (Files.exists(EXEC)) {
       EXEC.toFile().setExecutable(true);
 
@@ -35,9 +34,7 @@ public final class StartDotSH {
         String.join(" ", args)
       );
 
-      final Process proc = pb.start();
-
-      System.exit(proc.waitFor());
+      System.exit(pb.start().waitFor());
     } else {
       throw new FileNotFoundException(EXEC.toString());
     }
